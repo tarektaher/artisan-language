@@ -33,5 +33,6 @@
             "email": "tarektaher@live.fr"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
