@@ -16,7 +16,7 @@ class AddLanguageKeyCommand extends Command
         $value = $this->argument('value');
         $lang = $this->option('lang');
 
-        $langFile = resource_path("lang/{$lang}.json");
+        $langFile = base_path("lang/{$lang}.json");
 
         if (!File::exists($langFile)) {
             File::put($langFile, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
