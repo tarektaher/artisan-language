@@ -10,7 +10,8 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "8.*"
+        "php": "8.*",
+        "laravel/framework": "11.*"
     },
     "repositories": [
         {
