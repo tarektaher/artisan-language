@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendorName\ArtisanLanguage\Commands;
+namespace Tarektaher\ArtisanLanguage\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

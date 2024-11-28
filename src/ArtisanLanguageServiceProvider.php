@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendorName\ArtisanLanguage;
+namespace Tarektaher\ArtisanLanguage;
 
 use Illuminate\Support\ServiceProvider;
 
