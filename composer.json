@@ -1,10 +1,16 @@
 {
     "name": "tarektaher/artisan-language",
     "description": "add artisan commands for language",
+    "homepage": "https://github.com/tarektaher/artisan-language",
+    "authors": [
+        {
+            "name": "tarektaher",
+            "email": "tarektaher@live.fr"
+        }
+    ],
     "license": "MIT",
     "require": {
-        "php": ">=8.1",
-        "illuminate/support": "^11"
+        "php": "8.*"
     },
     "repositories": [
         {
@@ -24,11 +30,5 @@
             ]
         }
     },
-    "authors": [
-        {
-            "name": "tarektaher",
-            "email": "tarektaher@live.fr"
-        }
-    ],
     "minimum-stability": "dev"
 }
