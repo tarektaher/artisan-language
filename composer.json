@@ -8,8 +8,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "packages/tarektaher/artisan-language",
+            "type": "vcs",
+            "url": "https://github.com/tarektaher/artisan-language.git",
             "options": {
                 "symlink": true
             }
