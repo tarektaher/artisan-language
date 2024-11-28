@@ -9,10 +9,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/tarektaher/artisan-language.git",
-            "options": {
-                "symlink": true
-            }
+            "url": "git@github.com:tarektaher/artisan-language.git"
         }
     ],
     "autoload": {
