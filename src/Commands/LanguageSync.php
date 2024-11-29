@@ -70,7 +70,7 @@ class LanguageSync extends Command
 
     protected function getLocaleStrings($locale)
     {
-        $langFile = resource_path("lang/{$locale}.json");
+        $langFile = base_path("lang/{$locale}.json");
 
         if (!File::exists($langFile)) {
             $this->error("Language file '{$locale}.json' does not exist.");
@@ -89,7 +89,7 @@ class LanguageSync extends Command
 
     protected function getBaseStrings()
     {
-        $langFile = resource_path("lang/en.json");
+        $langFile = base_path("lang/en.json");
 
         if (!File::exists($langFile)) {
             $this->error("Base language file 'en.json' does not exist.");
@@ -108,7 +108,7 @@ class LanguageSync extends Command
 
     protected function updateFile($strings, $locale)
     {
-        $langFile = resource_path("lang/{$locale}.json");
+        $langFile = base_path("lang/{$locale}.json");
 
         try {
             File::put($langFile, json_encode($strings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
