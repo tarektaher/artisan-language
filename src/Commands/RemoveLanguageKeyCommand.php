@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\File;
 
 class RemoveLanguageKeyCommand extends Command
 {
-    protected $signature = 'lang:remove {key} {--lang=}';
+    protected $signature = 'lang:remove {key : The key to remove from the language file} {--lang= : The language (default: configured default language)}';
     protected $description = 'Remove a language key from a language file';
 
     public function handle()
     {
-        $key = $this->argument('key');
+        $key = $this->argument('key'); // Supports keys with spaces and special characters
         $lang = $this->option('lang') ?? config('artisan-language.default_language'); // Use default language if not specified
 
         if (empty($key)) {
