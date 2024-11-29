@@ -12,6 +12,7 @@ class ArtisanLanguageServiceProvider extends ServiceProvider
             $this->commands([
                 Commands\AddLanguageKeyCommand::class,
                 Commands\RemoveLanguageKeyCommand::class,
+                Commands\LanguageSync::class,
             ]);
         }
 
