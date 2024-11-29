@@ -10,10 +10,8 @@ class ArtisanLanguageServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                // Register your commands here
                 Commands\AddLanguageKeyCommand::class,
-                //Commands\RemoveLanguageKeyCommand::class,
-                // Add more commands as needed
+                Commands\RemoveLanguageKeyCommand::class,
             ]);
         }
 
