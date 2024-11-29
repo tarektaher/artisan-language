@@ -26,6 +26,12 @@ class AddLanguageKeyCommand extends Command
             return 1;
         }
 
+        $supportedLanguages = config('artisan-language.languages');
+        if (!array_key_exists($lang, $supportedLanguages)) {
+            $this->error("The language '{$lang}' is not supported.");
+            return 1;
+        }
+
         $this->processLanguageKey($key, $value, $lang);
 
         return 0;

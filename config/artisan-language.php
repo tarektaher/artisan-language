@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'default_language' => 'fr',
+    'default_language' => 'en',
     'languages' => [
-        'fr' => 'French',
         'en' => 'English',
+        'fr' => 'French',
     ],
 ];
