@@ -16,10 +16,23 @@ class ArtisanLanguageServiceProvider extends ServiceProvider
                 // Add more commands as needed
             ]);
         }
+
+        // Publier le fichier de configuration
+        $this->publishes([
+            __DIR__ . '/../config/artisan-language.php' => config_path('artisan-language.php'),
+        ], 'artisan-language-config');
+
+        // Publier les fichiers de traduction si nécessaire
+        $this->publishes([
+            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/artisan-language'),
+        ], 'artisan-language-translations');
     }
 
     public function register()
     {
-        // Bind services or repositories if necessary
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/artisan-language.php',
+            'artisan-language'
+        );
     }
 }
