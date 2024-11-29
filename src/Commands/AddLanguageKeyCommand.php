@@ -16,17 +16,46 @@ class AddLanguageKeyCommand extends Command
         $value = $this->argument('value');
         $lang = $this->option('lang');
 
-        $langFile = base_path("lang/{$lang}.json");
-
-        if (!File::exists($langFile)) {
-            File::put($langFile, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        if (empty($key) || empty($value)) {
+            $this->error('Both key and value are required.');
+            return 1;
         }
 
-        $translations = json_decode(File::get($langFile), true);
-        $translations[$key] = $value;
+        if (!preg_match('/^[a-zA-Z0-9_.]+$/', $key)) {
+            $this->error('The key can only contain alphanumeric characters, dots, and underscores.');
+            return 1;
+        }
 
-        File::put($langFile, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        $this->processLanguageKey($key, $value, $lang);
 
-        $this->info("Added key '{$key}' with value '{$value}' to '{$lang}.json'");
+        return 0;
     }
+
+    protected function processLanguageKey($key, $value, $lang)
+    {
+        try {
+            $langFile = base_path("lang/{$lang}.json");
+
+            if (!File::exists($langFile)) {
+                File::put($langFile, json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                $this->info("Created new language file '{$lang}.json'");
+            }
+
+            $translations = json_decode(File::get($langFile), true);
+
+            if (isset($translations[$key])) {
+                $this->warn("The key '{$key}' already exists. It will be overwritten.");
+            }
+
+            $translations[$key] = $value;
+
+            File::put($langFile, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+            $this->info("Added key '{$key}' with value '{$value}' to '{$lang}.json'");
+        } catch (\Exception $e) {
+            $this->error("Failed to update the language file: {$e->getMessage()}");
+        }
+    }
+
+
 }
