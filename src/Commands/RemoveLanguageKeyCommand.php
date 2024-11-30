@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class RemoveLanguageKeyCommand extends Command
 {
-    protected $signature = 'lang:rmkey {key} {--lang=}';
+    protected $signature = 'lg:remove  {key} {--lang=}';
     protected $description = 'Remove a language key from a language file';
 
     public function handle()

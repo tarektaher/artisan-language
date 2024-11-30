@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class AddLanguageKeyCommand extends Command
 {
-    protected $signature = 'lang:addkey {key} {value} {--lang=en}';
+    protected $signature = 'lg:add {key} {value} {--lang=en}';
     protected $description = 'Add a new language key to a language file';
 
     public function handle()

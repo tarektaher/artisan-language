@@ -12,7 +12,7 @@ class LanguageSync extends Command
      *
      * @var string
      */
-    protected $signature = 'language:sync
+    protected $signature = 'lg:sync
                             {locale : The locale to synchronize}
                             {--nomissing : Skip missing strings}
                             {--nofurther : Skip further strings}';

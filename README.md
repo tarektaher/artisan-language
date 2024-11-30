@@ -62,12 +62,32 @@ return [
 
 ## **Commands**
 
-### **1. Synchronize Translation Keys**
-Synchronize translation keys between the base language (`en`) and a target language.
+### **1. Scan for Missing Keys**
+Scan configured paths (Blade templates, PHP files, JavaScript files) for missing translation keys and update the JSON language files.
 
 ```bash
-php artisan language:sync {locale}
+php artisan lg:scan
 ```
+
+**Options:**
+- `--lang`: Specify the target language (default: configured default language).
+
+**Example:**
+```bash
+php artisan lg:scan --lang=fr
+```
+
+---
+
+### **2. Synchronize Translation Keys**
+Synchronize translation keys between the base language and a target locale.
+
+```bash
+php artisan lg:sync {locale}
+```
+
+**Arguments:**
+- `locale`: The locale to synchronize.
 
 **Options:**
 - `--nomissing`: Skip adding missing keys from the base language file.
@@ -75,24 +95,7 @@ php artisan language:sync {locale}
 
 **Example:**
 ```bash
-php artisan language:sync fr --nomissing
-```
-
----
-
-### **2. Scan for Missing Keys**
-Scan configured paths (Blade templates, PHP files, JavaScript files) for missing translation keys and update the JSON language files.
-
-```bash
-php artisan language:scan
-```
-
-**Options:**
-- `--lang`: Specify the target language (default: `en`).
-
-**Example:**
-```bash
-php artisan language:scan --lang=fr
+php artisan lg:sync fr --nomissing
 ```
 
 ---
@@ -101,12 +104,19 @@ php artisan language:scan --lang=fr
 Add a new translation key to the specified language file.
 
 ```bash
-php artisan lang:add {key} {value} {--lang=}
+php artisan lg:add {key} {value} {--lang=en}
 ```
+
+**Arguments:**
+- `key`: The translation key to add.
+- `value`: The value for the key.
+
+**Options:**
+- `--lang`: Specify the target language (default: `en`).
 
 **Example:**
 ```bash
-php artisan lang:add welcome "Welcome to our app" --lang=fr
+php artisan lg:add welcome "Welcome to our app" --lang=fr
 ```
 
 ---
@@ -115,49 +125,18 @@ php artisan lang:add welcome "Welcome to our app" --lang=fr
 Remove a translation key from the specified language file.
 
 ```bash
-php artisan lang:remove {key} {--lang=}
+php artisan lg:remove {key} {--lang=}
 ```
+
+**Arguments:**
+- `key`: The translation key to remove.
+
+**Options:**
+- `--lang`: Specify the target language.
 
 **Example:**
 ```bash
-php artisan lang:remove "Your email is invalid" --lang=fr
-```
-
----
-
-## **Usage Scenarios**
-
-### **Synchronizing Keys**
-To synchronize translation keys in the French locale:
-```bash
-php artisan language:sync fr
-```
-
-To skip adding missing keys:
-```bash
-php artisan language:sync fr --nomissing
-```
-
-To skip removing extra keys:
-```bash
-php artisan language:sync fr --nofurther
-```
-
-### **Scanning for Missing Keys**
-To scan and automatically add all missing keys:
-```bash
-php artisan language:scan
-```
-
-To scan for missing keys in French:
-```bash
-php artisan language:scan --lang=fr
-```
-
-### **Adding New Keys**
-To add a new translation key in English:
-```bash
-php artisan lang:add "welcome_message" "Welcome to our app" --lang=en
+php artisan lg:remove "Your email is invalid" --lang=fr
 ```
 
 ---
@@ -165,16 +144,6 @@ php artisan lang:add "welcome_message" "Welcome to our app" --lang=en
 ## **Customization**
 
 You can customize paths, regex patterns, and language file locations in the configuration file (`config/artisan-language.php`).
-
----
-
-## **Testing**
-
-Run the test suite to ensure everything is working correctly:
-
-```bash
-php artisan test
-```
 
 ---
 

@@ -12,7 +12,7 @@ class LanguageScanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'language:scan
+    protected $signature = 'lg:scan
                             {--lang= : The target language (default: configured default language)}';
 
     /**
