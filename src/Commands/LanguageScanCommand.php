@@ -84,10 +84,7 @@ class LanguageScanCommand extends Command
                 continue;
             }
 
-            $files = collect(File::allFiles($path))->filter(function ($file) {
-                // Filter for supported extensions: .php, .js, .vue
-                return in_array($file->getExtension(), ['php', 'js', 'vue']);
-            });
+            $files = File::allFiles($path);
 
             foreach ($files as $file) {
                 $content = File::get($file);
